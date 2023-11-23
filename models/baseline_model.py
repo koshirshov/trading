@@ -7,4 +7,4 @@ class BaselineModel:
         pass
     
     def predict(self, X):
-        return X["Close_1min_before"]
+        return X["Close_1min_before"], X["Open"]

@@ -1,6 +1,7 @@
 import pandas as pd
 
 feature_list = ['Open', "High", "Low", "Close", "Volume", "price_diff1", "price_diff2", "price_diff3", "price_diff4"]
+drop_list = ["High", "Low", "Close", "Volume", "price_diff1", "price_diff2", "price_diff3", "price_diff4"]
 target = ['target']
 prices_features = ['open', 'high', 'low', 'close']
 time_features = ['hour', 'day', 'day_of_week', 'month', 'year']
@@ -60,6 +61,6 @@ def data_prepare(n_minutes_before, n_to_val):
     data = create_features_from_previos_n_min(data, n_minutes_before)
 
     target = data['Close'].copy(deep=True)
-    data = data.drop(columns=feature_list)
+    data = data.drop(columns=drop_list)
 
     return devide_data_for_train_and_val(data, target, n_to_val)
